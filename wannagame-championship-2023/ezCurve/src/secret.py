@@ -1,0 +1,1 @@
+flag = b"W1{P3ll_Curv3_1s_fun_r1ght?_532e3a90d802f4a3e3ce25b5f72d93d4}"
