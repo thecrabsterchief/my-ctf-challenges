@@ -51,6 +51,6 @@ $$
 \end{align*}
 $$
 
-Compute DLP on the new Field is pretty fast (because the orther of that Field is $p + 1$ which is very smooth as intended...)
+Compute DLP on the new Field is pretty fast (because the order of that Field is $p + 1$ which is very smooth as intended...)
 
 For more details, see my [full script](./solve.sage)
