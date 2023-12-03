@@ -81,7 +81,7 @@ $$
 
 so the strategy is:
 - First partition $512$ keys to $8$ sets, each set has $64$ keys.
-- Next build the ciphertext that valid for each key sets at the same time using multiprocces
+- Next build the ciphertext that valid for each key sets at the same time using multiprocessing
 - Then use oracle to verify which 64-keys-set contained the real `master_key` (use $8$ tries)
 - Finnaly just do binary search to figure out the exact `master_key` (use $6$ tries)
 

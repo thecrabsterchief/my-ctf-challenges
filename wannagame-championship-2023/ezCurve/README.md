@@ -24,7 +24,7 @@ $$
 $$
 
 
-which is sth like... a Pell's equation. So we've found the mapping that transform the original curve to **"Pell Curve"**: $(x, y) \rightarrow \left( \dfrac{1}{x} + y\right)$
+which is sth like... a Pell's equation. So we've found the mapping that transform the original curve to **"Pell Curve"**: $(x, y) \rightarrow \left( \dfrac{1}{x} + y, y\right)$
 
 P/s: You also realize my intended mapping on these lines of code:
 
@@ -50,5 +50,7 @@ $$
 &\phi: &(a, b) &\mapsto (a + bx)
 \end{align*}
 $$
+
+Compute DLP on the new Field is pretty fast (because the orther of that Field is $p + 1$ which is very smooth as intended...)
 
 For more details, see my [full script](./solve.sage)
