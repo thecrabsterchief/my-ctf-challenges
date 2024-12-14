@@ -154,7 +154,11 @@ there are sth you need to note:
 - For $f,g$, standardize the coefficient of a monomial with the highest degree is $1$.
 - $f$ and $g$ have different monomials, it mostly does not matter… except the constant coefficient. So let’s calculate other coefficients first, then try to splitting for each constant of $f,g$.
 
-From now, let's Linear Algebra help you to recover $\left(\mathbf{k_{i}^{(f)}}\right)_{i=1}^{1304}$, $\left(\mathbf{k_{i}^{(g)}}\right)_{i=1}^{1304}$, $\mathbf{CONST}$. All you need is just one more step that is splitting $\mathbf{CONST}$ into $\mathbf{const}^{(f)}$ and $\mathbf{const^{(g)}}$. Let's see what happen if we reversed the last round:
+From now, let's Linear Algebra help you to recover:
+
+![image](https://github.com/user-attachments/assets/e9bde041-5657-425e-92dc-6b289af31bdb)
+
+All you need is just one more step that is splitting $\mathbf{CONST}$ into $\mathbf{const}^{(f)}$ and $\mathbf{const^{(g)}}$. Let's see what happen if we reversed the last round:
 
 $$
 \begin{cases}
