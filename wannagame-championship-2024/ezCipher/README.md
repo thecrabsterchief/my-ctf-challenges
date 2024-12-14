@@ -40,6 +40,7 @@ The encryption algorithm used in this challenge called **PURE** - which is a var
 
 Bellow are some key points of **PURE-Cipher:**
 - `init_sbox:` it's basically $S(x) = x^3 + 3$ for $x \in \mathbb{F}_{2^{16}}$.
+  
     ```c
     uint16_t* sbox = NULL;
 
@@ -57,6 +58,7 @@ Bellow are some key points of **PURE-Cipher:**
     }
     ```
 - `key_expansion:` convert 32-bytes `master_key` to array of `rkeys` (size = 16)
+  
     ```c
     static void key_expansion(uint16_t* rkeys, uint8_t* master_key) {
         for (int i=0; i<KEY_SIZE/2; ++i)
@@ -64,18 +66,9 @@ Bellow are some key points of **PURE-Cipher:**
     }
     ```
 - `Cipher_encrypt:` Let $\left(s_{0}^{(i)}, s_{1}^{(i)}, s_{2}^{(i)}, s_{3}^{(i)}\right)$ be the state of plaintext at round `i` (for $i \in \overline{0,3}$) then the encryption is simply
-    $$
-    \begin{cases}
-        s_{0}^{(i+1)} &= \left(s_{1}^{(i)}   + k_{0}^{(i)}\right)^3 + 3 \\
-        s_{1}^{(i+1)} &= \left(s_{2}^{(i)}   + k_{1}^{(i)}\right)^3 + 3 \\
-        s_{2}^{(i+1)} &= \left(s_{3}^{(i)}   + k_{2}^{(i)}\right)^3 + 3 \\
-        s_{3}^{(i+1)} &= \left(s_{0}^{(i+1)} + k_{3}^{(i)}\right)^3 + 3
-    \end{cases} \qquad,\forall i \in \overline{0, 3}, \qquad\text{and }
-    \begin{cases}
-        pt &= \left(s_{0}^{(0)}, s_{1}^{(0)}, s_{2}^{(0)}, s_{3}^{(0)}\right)\\ 
-        ct &= \left(s_{0}^{(4)}, s_{1}^{(4)}, s_{2}^{(4)}, s_{3}^{(4)}\right) 
-    \end{cases}
-    $$
+
+![image](https://github.com/user-attachments/assets/f71c826f-3bba-4003-b763-3b9f93d059b7)
+  
     ```c
     void Cipher(state_t* state, const uint16_t* rkeys) {
         for (int r=0; r<NUM_ROUNDS; ++r) {
@@ -155,13 +148,7 @@ for f, g in zip(fn, gn):
 
 Now you need to collect around ~ $1311$ samples of (pt, ct), then constuct some "linear" equations
 
-$$
-\begin{align*}
-&\text{}\left(\mathbf{const^{(f)}} + \sum_{i=1}^{1304}\mathbf{k_{i}^{(f)}}\times\mathbf{m_{i}^{(f)}}\right) - \left(\mathbf{const^{(g)}} + \sum_{i=1}^{4}\mathbf{k_{i}^{(g)}}\times\mathbf{m_{i}^{(g)}}\right) &= 0 \\
-
-&\Leftrightarrow \sum_{i=1}^{1304}\mathbf{k_{i}^{(f)}}\times\mathbf{m_{i}^{(f)}} - \sum_{i=1}^{4}\mathbf{k_{i}^{(g)}}\times\mathbf{m_{i}^{(g)}} + \mathbf{CONST} &= 0
-\end{align*}
-$$
+![image](https://github.com/user-attachments/assets/ac08acbd-2d80-4fee-be5c-259dd5bc9ed8)
 
 there are sth you need to note:
 - For $f,g$, standardize the coefficient of a monomial with the highest degree is $1$.
