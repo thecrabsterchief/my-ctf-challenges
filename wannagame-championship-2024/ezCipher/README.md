@@ -67,7 +67,7 @@ Bellow are some key points of **PURE-Cipher:**
     ```
 - `Cipher_encrypt:` Let $\left(s_{0}^{(i)}, s_{1}^{(i)}, s_{2}^{(i)}, s_{3}^{(i)}\right)$ be the state of plaintext at round `i` (for $i \in \overline{0,3}$) then the encryption is simply
 
-![image](https://github.com/user-attachments/assets/f71c826f-3bba-4003-b763-3b9f93d059b7)
+    ![image](https://github.com/user-attachments/assets/f71c826f-3bba-4003-b763-3b9f93d059b7)
   
     ```c
     void Cipher(state_t* state, const uint16_t* rkeys) {
